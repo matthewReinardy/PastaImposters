@@ -18,15 +18,13 @@
                 <li class="dropdown">
                     <a href="#">Short Pasta</a>
                     <div class="dropdown-content">
-                        <a href="products.php#farfalle">Farfalle</a>
-                        <a href="products.php#rigatoni">Rigatoni</a>
-                        <a href="products.php#shell">Shell</a>
-                        <a href="products.php#rotini">Rotini</a>
-                        <a href="products.php#orzo">Orzo</a>
+                        <a href="SmallPasta.php">Farfalle</a>
+                        <a href="SmallPasta.php">Rigatoni</a>
+                        <a href="SmallPasta.php">Shell</a>
+                        <a href="SmallPasta.php">Rotini</a>
+                        <a href="SmallPasta.php">Orzo</a>
                     </div>
                 </li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact</a></li>
                 <li><a href="CartPage.php">Cart</a></li>
             </ul>
         </div>

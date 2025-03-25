@@ -6,183 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Short Pasta Collection - Pasta Imposters</title>
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/smallPasta.css" rel="stylesheet">
     <style>
-        /* Product Grid Styles */
-        .product-header {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/Short_Noodles_Img.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 80px;
-            color: white;
-            text-align: center;
-            padding: 0 2rem;
-        }
 
-        .product-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .product-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .products-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .product-description {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .product-description h2 {
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-description p {
-            color: #666;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .product-item {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .product-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .product-item:hover .product-image img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .product-info p {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #e67e22;
-            margin-bottom: 1rem;
-        }
-
-        .product-btn {
-            display: inline-block;
-            background-color: #e67e22;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-
-        .product-btn:hover {
-            background-color: #d35400;
-        }
-
-        /* Features Section */
-        .features {
-            background-color: #f5f5f5;
-            padding: 4rem 2rem;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-heading {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .features-heading h2 {
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #e67e22;
-            margin-bottom: 1rem;
-        }
-
-        .feature-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .feature-item p {
-            color: #666;
-            line-height: 1.5;
-        }
     </style>
 </head>
 
@@ -207,73 +33,37 @@
         <div class="product-grid">
             <div class="product-item">
                 <div class="product-image">
-                    <img src="../images/farfalle.jpg" alt="Farfalle Pasta">
+                    <img src="../images/Farfalle_Image.jpg" alt="Farfalle Pasta">
                 </div>
                 <div class="product-info">
                     <h3>Farfalle</h3>
                     <p>Bow-tie shaped pasta perfect for creamy and tomato-based sauces.</p>
                     <div class="product-price">$5.99 / 500g</div>
-                    <a href="product-details.php?id=101" class="product-btn">View Details</a>
+                    <a href="product-details.php?id=101" class="product-btn">Add To Cart</a>
                 </div>
             </div>
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="../images/rigatoni.jpg" alt="Rigatoni Pasta">
+                    <img src="../images/Rigatoni_Image.jpg" alt="Rigatoni Pasta">
                 </div>
                 <div class="product-info">
                     <h3>Rigatoni</h3>
                     <p>Tube-shaped pasta with ridges ideal for thick, hearty sauces.</p>
                     <div class="product-price">$6.49 / 500g</div>
-                    <a href="product-details.php?id=102" class="product-btn">View Details</a>
+                    <a href="product-details.php?id=102" class="product-btn">Add To Cart</a>
                 </div>
             </div>
 
             <div class="product-item">
                 <div class="product-image">
-                    <img src="../images/fusilli.jpg" alt="Fusilli Pasta">
+                    <img src="../images/Shells_Image.jpg" alt="Fusilli Pasta">
                 </div>
                 <div class="product-info">
-                    <h3>Fusilli</h3>
+                    <h3>Shells</h3>
                     <p>Spiral-shaped pasta that captures pesto and chunky sauces beautifully.</p>
                     <div class="product-price">$5.79 / 500g</div>
-                    <a href="product-details.php?id=103" class="product-btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="product-image">
-                    <img src="../images/penne.jpg" alt="Penne Pasta">
-                </div>
-                <div class="product-info">
-                    <h3>Penne</h3>
-                    <p>Tube-shaped pasta with angled ends, perfect for holding sauces inside.</p>
-                    <div class="product-price">$5.49 / 500g</div>
-                    <a href="product-details.php?id=104" class="product-btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="product-image">
-                    <img src="../images/orecchiette.jpg" alt="Orecchiette Pasta">
-                </div>
-                <div class="product-info">
-                    <h3>Orecchiette</h3>
-                    <p>Small, ear-shaped pasta that catches vegetables and chunky sauces.</p>
-                    <div class="product-price">$7.29 / 500g</div>
-                    <a href="product-details.php?id=105" class="product-btn">View Details</a>
-                </div>
-            </div>
-
-            <div class="product-item">
-                <div class="product-image">
-                    <img src="../images/conchiglie.jpg" alt="Conchiglie Pasta">
-                </div>
-                <div class="product-info">
-                    <h3>Conchiglie</h3>
-                    <p>Shell-shaped pasta that traps sauces and small ingredients inside.</p>
-                    <div class="product-price">$6.99 / 500g</div>
-                    <a href="product-details.php?id=106" class="product-btn">View Details</a>
+                    <a href="product-details.php?id=103" class="product-btn">Add To Cart</a>
                 </div>
             </div>
         </div>

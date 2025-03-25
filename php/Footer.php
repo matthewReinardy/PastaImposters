@@ -8,10 +8,10 @@
         <div class="footer-section">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact</a></li>
-                <li><a href="privacy.php">Privacy Policy</a></li>
+                <li><a href="HomePage.php">Home</li>
+                <li><a href="LargePasta.php">Large Pasta</li>
+                <li><a href="SmallPasta.php">Small Pasta</li>
+                <li><a href="CartPage.php">Your Cart</li>
             </ul>
         </div>
         <div class="footer-section">
