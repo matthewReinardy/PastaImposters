@@ -40,18 +40,44 @@ class User
         return true;
     }
 
-    /* public function login(): bool
+    public function login($inputPassword): bool
     {
         try {
-            $sql = "SELECT password, email, full_name
-            FROM users
-            WHERE email = :email";
-        } catch (Exception $e) {
-            throw $e;
-        }
-        return $authenticated;
-    } */
+            // Validate input
+            if (empty($this->email) || empty($inputPassword)) {
+                return false;
+            }
 
+            $sql = "SELECT password, email, full_name
+                FROM users
+                WHERE email = :email";
+
+            $dbConnection = new DatabaseConnection();
+            $dbConnection->connect();
+            $pdo = $dbConnection->getPDO();
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':email' => $this->email]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($inputPassword, $user['password'])) {
+                // Start a secure session
+                session_start();
+                session_regenerate_id(true); // Prevent session fixation
+
+                $_SESSION['user_email'] = $user['email'];
+                $_SESSION['user_name'] = $user['full_name'];
+                $_SESSION['logged_in'] = true;
+
+                return true;
+            }
+            return false;
+        } catch (PDOException $e) {
+            // Log the error
+            error_log("Login error: " . $e->getMessage());
+            return false;
+        }
+    }
 
     public function getFullName()
     {

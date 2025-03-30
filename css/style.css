@@ -40,7 +40,7 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #231313;
             font-weight: 500;
             padding: 0.5rem 1rem;
             transition: color 0.3s;
@@ -195,7 +195,7 @@
 
         /* Footer */
         footer {
-            background-color: #333;
+            background-color: #443e3e;
             color: white;
             padding: 4rem 2rem 2rem;
         }
@@ -218,12 +218,16 @@
             list-style: none;
         }
 
+        .footer-section p {
+            color: white;
+        }
+
         .footer-section li {
             margin-bottom: 0.5rem;
         }
 
         .footer-section a {
-            color: white;
+            color: rgb(232, 231, 231) !important;
             text-decoration: none;
             transition: color 0.3s;
         }

@@ -21,8 +21,6 @@
                         <a href="SmallPasta.php">Farfalle</a>
                         <a href="SmallPasta.php">Rigatoni</a>
                         <a href="SmallPasta.php">Shell</a>
-                        <a href="SmallPasta.php">Rotini</a>
-                        <a href="SmallPasta.php">Orzo</a>
                     </div>
                 </li>
                 <li><a href="CartPage.php">Cart</a></li>

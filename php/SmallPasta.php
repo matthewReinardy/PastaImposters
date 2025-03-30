@@ -1,3 +1,52 @@
+<!-- Short Pasta Page (Short Pasta Collection) -->
+<?php
+// Include necessary files
+require_once 'Product.php';
+require_once 'ProductCatalog.php';
+require_once 'Cart.php';
+
+// Start session and initialize cart
+session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+// Handle Add to Cart functionality
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $productId = intval($_POST['product_id']);
+    $productCatalog = new ProductCatalog();
+    $product = $productCatalog->getProductById($productId);
+
+    if ($product) {
+        // Check if product already in cart
+        $productExists = false;
+        foreach ($_SESSION['cart'] as &$item) {
+            if ($item['product']->id == $productId) {
+                $item['quantity']++;
+                $productExists = true;
+                break;
+            }
+        }
+
+        // If product not in cart, add it
+        if (!$productExists) {
+            $_SESSION['cart'][] = [
+                'product' => $product,
+                'quantity' => 1
+            ];
+        }
+
+        // Redirect to prevent form resubmission
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +56,6 @@
     <title>Short Pasta Collection - Pasta Imposters</title>
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/smallPasta.css" rel="stylesheet">
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -39,7 +85,10 @@
                     <h3>Farfalle</h3>
                     <p>Bow-tie shaped pasta perfect for creamy and tomato-based sauces.</p>
                     <div class="product-price">$5.99 / 500g</div>
-                    <a href="product-details.php?id=101" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="101">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
 
@@ -51,7 +100,10 @@
                     <h3>Rigatoni</h3>
                     <p>Tube-shaped pasta with ridges ideal for thick, hearty sauces.</p>
                     <div class="product-price">$6.49 / 500g</div>
-                    <a href="product-details.php?id=102" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="102">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
 
@@ -63,7 +115,10 @@
                     <h3>Shells</h3>
                     <p>Spiral-shaped pasta that captures pesto and chunky sauces beautifully.</p>
                     <div class="product-price">$5.79 / 500g</div>
-                    <a href="product-details.php?id=103" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="103">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
         </div>

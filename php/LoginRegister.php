@@ -11,6 +11,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CreateUser'])) {
     }
 }
 
+// Handle User Login
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['LoginUser'])) {
+    // Validate inputs
+    if (empty($_POST['login-email']) || empty($_POST['login-password'])) {
+        $loginError = "Email and password are required";
+    } else {
+        $user = new User('', $_POST['login-email'], '');
+
+        if ($user->login($_POST['login-password'])) {
+            // Redirect to a dashboard or home page
+            header("Location: HomePage.php");
+            exit();
+        } else {
+            $loginError = "Invalid email or password";
+        }
+    }
+}
+
 
 ?>
 
@@ -38,18 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CreateUser'])) {
             <div class="form-container">
                 <h2 class="form-title">Welcome Back</h2>
 
-                <form>
+                <?php if (isset($loginError)): ?>
+                    <div class="error-message"><?php echo $loginError; ?></div>
+                <?php endif; ?>
+
+                <form action="LoginRegister.php" method="POST">
                     <div class="form-group">
                         <label class="form-label" for="login-email">Email</label>
-                        <input type="email" id="login-email" class="form-input" placeholder="Enter your email address" required>
+                        <input type="email" name="login-email" id="login-email" class="form-input" placeholder="Enter your email address" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="login-password">Password</label>
-                        <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                        <input type="password" name="login-password" id="login-password" class="form-input" placeholder="Enter your password" required>
                     </div>
 
-                    <button type="submit" class="form-button">Login</button>
+                    <button type="submit" name="LoginUser" class="form-button">Login</button>
                 </form>
 
                 <div class="or-divider">
@@ -89,6 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CreateUser'])) {
                 <div class="or-divider">
                     <span>OR</span>
                 </div>
+
+                <?php if (isset($loginError)): ?>
+                    <div class="error-message"><?php echo $loginError; ?></div>
+                <?php endif; ?>
 
                 <div class="form-footer">
                     Already have an account? <a href="#" onclick="openTab('login')">Login</a>

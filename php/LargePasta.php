@@ -1,3 +1,52 @@
+<!-- Long Pasta Page (Long Pasta Collection) -->
+<?php
+// Include necessary files
+require_once 'Product.php';
+require_once 'ProductCatalog.php';
+require_once 'Cart.php';
+
+// Start session and initialize cart
+session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+// Handle Add to Cart functionality
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
+    $productId = intval($_POST['product_id']);
+    $productCatalog = new ProductCatalog();
+    $product = $productCatalog->getProductById($productId);
+
+    if ($product) {
+        // Check if product already in cart
+        $productExists = false;
+        foreach ($_SESSION['cart'] as &$item) {
+            if ($item['product']->id == $productId) {
+                $item['quantity']++;
+                $productExists = true;
+                break;
+            }
+        }
+
+        // If product not in cart, add it
+        if (!$productExists) {
+            $_SESSION['cart'][] = [
+                'product' => $product,
+                'quantity' => 1
+            ];
+        }
+
+        // Redirect to prevent form resubmission
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +56,9 @@
     <title>Long Pasta Collection - Pasta Imposters</title>
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/largePasta.css" rel="stylesheet">
-
 </head>
 
 <body>
-    <!-- Including the header file -->
     <?php include "Header.php" ?>
 
     <!-- Product Header Banner -->
@@ -38,7 +85,10 @@
                     <h3>Spaghetti</h3>
                     <p>The classic long, thin cylindrical pasta perfect for tomato and olive oil sauces.</p>
                     <div class="product-price">$4.99 / 500g</div>
-                    <a href="product-details.php?id=201" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="201">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
 
@@ -50,7 +100,10 @@
                     <h3>Fettuccine</h3>
                     <p>Flat, thick noodles that pair perfectly with rich, creamy sauces like Alfredo.</p>
                     <div class="product-price">$6.49 / 500g</div>
-                    <a href="product-details.php?id=202" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="202">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
 
@@ -62,7 +115,10 @@
                     <h3>Linguine</h3>
                     <p>Flat, narrow pasta between spaghetti and fettuccine, ideal for seafood dishes.</p>
                     <div class="product-price">$5.79 / 500g</div>
-                    <a href="product-details.php?id=203" class="product-btn">Add To Cart</a>
+                    <form method="POST" action="">
+                        <input type="hidden" name="product_id" value="203">
+                        <button type="submit" name="add_to_cart" class="product-btn">Add To Cart</button>
+                    </form>
                 </div>
             </div>
         </div>
