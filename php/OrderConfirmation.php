@@ -167,7 +167,7 @@ $estimatedDelivery = date('F j, Y', strtotime('+3 days'));
             </div>
 
             <div class="detail-row">
-                <strong>Payment Method:</strong> Credit Card (ending in ****)
+                <strong>Payment Method:</strong> Credit Card (ending in <?php echo isset($_SESSION['card_last_four']) ? $_SESSION['card_last_four'] : '****'; ?>)
             </div>
         </div>
 

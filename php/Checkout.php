@@ -69,6 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // If no errors, process the order
     if (empty($errors)) {
         // In a real app, you would process payment and store order here
+        // Get the last 4 digits of the card number
+        $cardNumber = str_replace(' ', '', $_POST['card_number']);
+        $lastFourDigits = substr($cardNumber, -4);
+
+        // Store it in the session
+        $_SESSION['card_last_four'] = $lastFourDigits;
 
         // Clear the cart after successful checkout
         $_SESSION['cart'] = [];
